@@ -43,6 +43,14 @@ con = file(f, encoding = "windows-1252")
 a = readSRT(con)
 dim(a)
 head(a)
+
+
+f = system.file("sampleDocs", "CHG05Apr2015_803.srt", package = "RSRT")
+a = readSRT(f, encoding = "UTF-16")
+
+
+con = file(f, encoding = "UTF-16")
+a = readSRT(con)
+close(con)
 }
-\keyword{ ~kwd1 }
-\keyword{ ~kwd2 }
+\keyword{IO} 
