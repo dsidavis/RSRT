@@ -1,0 +1,12 @@
+Package: RSRT
+Version: 0.1-0
+Title: Read SRT Subtitle Files
+Description: Read subtitle information from SRT files
+ that contain the start and end for a subtitle and the
+ text for that subtitle.
+Author: Duncan Temple Lang
+Maintainer: Duncan Temple Lang <dtemplelang@ucdavis.edu>
+License: BSD3
+Note: Sample files from pysrt module.
+
+ 
