@@ -1,6 +1,10 @@
 readSRT =
-function(file, text = readLines(file, ...), ...)
+function(file, text = readLines(file, ...), encoding = "", ...)
 {
+    if(!missing(encoding) && is.character(file)) {
+        file = file(file, encoding = encoding)
+        on.exit(close(file))
+    }
     g = cumsum(grepl("^[[:space:]]*$", text))
     structure(do.call(rbind, tapply(text, g, readStanza)), class = c("SRT", "data.frame"))
 }
@@ -26,7 +30,7 @@ function(ll)
 
     time = ll[tm]
     txt = ll[ - seq(1, tm) ]
-    els = strsplit(time, "-?->")[[1]]
+    els = strsplit(time, "[[:space:]]*-?->[[:space:]]*")[[1]]
     
     data.frame(text = paste(txt, collapse = "\n"),
                start = getTime(els[1]), end = getTime(els[2]),

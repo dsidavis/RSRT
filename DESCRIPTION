@@ -7,6 +7,7 @@ Description: Read subtitle information from SRT files
 Author: Duncan Temple Lang
 Maintainer: Duncan Temple Lang <dtemplelang@ucdavis.edu>
 License: BSD3
-Note: Sample files from pysrt module.
+Note: Sample files from pysrt module by Jean Boussier.
+   See https://github.com/byroot/pysrt.
 
  
