@@ -1,13 +1,16 @@
 
-m = matrix(unlist(strsplit(grep("803;", a$text, value = TRUE), ";")), , 7, byrow = TRUE)
+# Ignore for now
+#m = matrix(unlist(strsplit(grep("803;", a$text, value = TRUE), ";")), , 7, byrow = TRUE)
 
 
 
 # Exploring the text with the identifiers to see how many fields there are.
-ff = lapply(list.files( full = TRUE), readSRT, encoding = "UTF-16")
+files = list.files( full = TRUE)
+ff = lapply(files, readSRT, encoding = "UTF-16")
 
 # Get all the text and ignore which file it comes from.
 at = unlist(lapply(ff, `[[`, "text"))
+fileName = rep(files, sapply(ff, nrow))
 
 # Starts with a digit.  Implies an ID.
 dat = grepl("^[U0-9]", at)
@@ -61,7 +64,7 @@ m2[nv] = lapply(m2[nv], as.numeric)
 f = "CHG05Apr2015_803.srt"
 a = readSRT(f, encoding = "UTF-16")
 
-g = cumsum(grepl("^(Start|End);", a$text))
+
 
 aggData =
 function(x)
@@ -69,4 +72,4 @@ function(x)
     vals = grep("^[U0-9]", x, value = TRUE)
 }
 
-tapply(a$text, g, aggData)
+
