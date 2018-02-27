@@ -24,5 +24,5 @@ vals = lapply(dfs, xpnd)
 
 
 #
-See explore.R for finding the files and rows that
-do not have 7 values.
+
+See explore.R for finding the files and rows that do not have 7 values.
