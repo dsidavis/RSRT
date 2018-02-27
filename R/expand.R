@@ -37,12 +37,21 @@ function(vals, els = strsplit(vals, ";"))
     i = sapply(els, length) != 7
     if(any(i)) 
        warning(sum(i), ' lines do not have 7 values')
-
-    m = matrix(unlist(els),,7, byrow = TRUE)    
-    m2 = as.data.frame(m)    
-    names(m2) = c("ID", "BH", "angle1", "angle2", "stake", "x", "y")    
+    m2 = do.call(rbind, lapply(els, mkRow))
+#    m = matrix(unlist(els),,7, byrow = TRUE)    
+#    m2 = as.data.frame(m)    
+#    names(m2) = c("ID", "BH", "angle1", "angle2", "stake", "x", "y")    
 
     fixNumVals(m2)
+}
+
+mkRow =
+function(x)
+{
+    length(x) = 7
+    ans = as.data.frame(as.list(x))
+    names(ans) = c("ID", "BH", "angle1", "angle2", "stake", "x", "y")
+    ans
 }
 
 fixNumVals =
